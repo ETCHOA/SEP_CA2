@@ -12,6 +12,7 @@ var storeDB = {
                 }
                 else {
                     if(storeId == -1) {
+                        console.log("test")
                         var sql = 'SELECT sum(l.QUANTITY) as sum FROM storeentity s, warehouseentity w, '
                             +'storagebinentity sb, storagebinentity_lineitementity sbli, lineitementity l, '
                             +'itementity i where s.WAREHOUSE_ID=w.ID and w.ID=sb.WAREHOUSE_ID and '
@@ -23,6 +24,8 @@ var storeDB = {
                                 return reject(err);
                             } else {
                                 conn.end();
+                                console.log(result[0].sum)
+                                result[0].sum = 1;
                                 return resolve(result);
                             }
                         });
